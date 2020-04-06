@@ -1,15 +1,15 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
       <div class="col-xs-12">
         <h2>Mes appareils</h2>
-        <p>Mis à jour {{ lastUpdate }} </p>
+        <p>Mis à jour {{ lastUpdate | async | date:'short' | uppercase}} </p>
         <ul class="list-group">
           <app-appareil *ngFor="let appareil of appareils" [appareilName]="appareil.name" [appareilStatus]="appareil.status"></app-appareil>
-
         </ul>
         <button class="btn btn-success"
                 [disabled]="!isAuth"
                 (click)="onAllumer()">tout allumer</button>
       </div>
   </div>
-</div>
+</div> -->
+<app-post-list-component [posts]="arrayPosts"></app-post-list-component>
