@@ -16,14 +16,15 @@ import { PostsComponent } from './posts/posts.component';
 import {AuthService} from './services/auth.service';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import {AuthGuardService} from './services/auth-guard.service';
 
 
 const appRoutes: Routes = [
-  {path: 'appareils', component: AppareilViewComponent},
-  {path: 'appareils/:id', component: SingleAppareilComponent},
+  {path: 'appareils', canActivate: [AuthGuardService], component: AppareilViewComponent},
+  {path: 'appareils/:id', canActivate : [AuthGuardService], component: SingleAppareilComponent},
   {path: 'auth', component: AuthComponent},
-  {path: '', component: AppareilViewComponent},
-  {path: 'posts', component: PostsComponent},
+  {path: '', component: AuthComponent},
+  {path: 'posts', canActivate : [AuthGuardService], component: PostsComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: 'not-found'}
 ];
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     AppareilService,
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
