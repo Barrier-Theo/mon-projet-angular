@@ -27,10 +27,7 @@ export class AppareilService {
 
   getAppareilById(id: number): Appareil {
     const appareil = this.appareils.find(
-      (a) => {
-        return a.id === id;
-      }
-    );
+      (a) => a.id === id);
     return appareil;
   }
 

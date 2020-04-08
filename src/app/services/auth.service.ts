@@ -1,5 +1,5 @@
 export class AuthService {
-  isAuth = false;
+  isAuth: boolean;
   constructor() { }
   signIn() {
     return new Promise((resolve, reject) => {
