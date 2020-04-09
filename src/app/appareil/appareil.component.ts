@@ -22,7 +22,9 @@ export class AppareilComponent implements OnInit {
     this.appareilStatus === 'allumé' ? this.appareilService.switchOffOne(this.index) : this.appareilService.switchOnOne(this.index);
   }
 
-
+  getName() {
+    return this.appareilName;
+  }
   getStatus() {
     return this.appareilStatus;
   }

@@ -5,6 +5,15 @@ Repository to learn angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
+#config 
+
+You must have nodejs 12.
+    npm -install -g @npm@latest
+    npm -install -g @angular/cli
+ 
+In the project directory : 
+    npm install bootstrap@3.3.7 --save.
+    
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
