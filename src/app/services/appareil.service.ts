@@ -7,13 +7,15 @@ export class AppareilService {
 
   appareilsSubject: Subject<Appareil[]>;
   private _appareils: Appareil[];
+  appareilObj: Appareil;
+
 
   constructor() {
     this.appareilsSubject = new Subject<Appareil[]>();
     this._appareils = [
       {
         id: 1,
-        name : 'Machine à laver',
+        name: 'Machine à laver',
         status: 'éteint'
       },
       {
@@ -28,12 +30,13 @@ export class AppareilService {
       }
     ];
   }
+
   get appareils(): Appareil[] {
     return this._appareils;
   }
 
   emitAppareilSubject(): void{
-    this.appareilsSubject.next(this.appareils.slice());
+    //this.appareilsSubject.next(this.appareils.slice());
     console.log(this._appareils);
   }
 
@@ -65,6 +68,19 @@ export class AppareilService {
   }
   switchOffOne(i: number): void{
     this.appareils[i].status = 'éteint';
+    this.emitAppareilSubject();
+  }
+
+  addAppareil(name: string, status: string): void{
+    this.appareilObj = {
+      id: 0,
+      name: '',
+      status: ''
+    };
+    this.appareilObj.name = name;
+    this.appareilObj.status = status;
+    this.appareilObj.id = this.appareils[(this.appareils.length - 1)].id + 1;
+    this.appareils.push(this.appareilObj);
     this.emitAppareilSubject();
   }
 }
